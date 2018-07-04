@@ -11,7 +11,7 @@ resources:
   type: git
   source:
     branch: master
-    uri: https://github.com/pivotalservices/concourse-pipeline-samples.git
+    uri: https://github.com/ckunst/pcf-articulate-code.git
 - name: PWS
   type: cf
   source:
@@ -23,14 +23,14 @@ resources:
     space: {{pws-space}}
 
 jobs:
-- name: unit-tests
-  serial: true
-  public: true
-  plan:
-  - get: concourse-pipeline-samples
-    trigger: true
-  - task: run-unit-tests
-    file: concourse-pipeline-samples/blue-green-app-deployment/ci/tasks/unit-tests.yml
+#- name: unit-tests
+#  serial: true
+#  public: true
+#  plan:
+#  - get: concourse-pipeline-samples
+#    trigger: true
+#  - task: run-unit-tests
+#    file: concourse-pipeline-samples/blue-green-app-deployment/ci/tasks/unit-tests.yml
 
 - name: deploy-app
   serial: true
@@ -38,8 +38,8 @@ jobs:
   plan:
   - get: concourse-pipeline-samples
     trigger: true
-    passed:
-      - unit-tests
+#    passed:
+#      - unit-tests
   - task: get-current-app-color
     file: concourse-pipeline-samples/blue-green-app-deployment/ci/tasks/current-app-get-info.yml
     params:
