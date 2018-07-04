@@ -1,7 +1,7 @@
 groups:
 - name: main
   jobs:
-  - unit-tests
+#  - unit-tests
   - deploy-app
   - load-tests
   - promote-new-version
