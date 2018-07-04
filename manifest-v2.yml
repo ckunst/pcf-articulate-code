@@ -1,0 +1,7 @@
+---
+applications:
+- name: articulate-ckunst-v2
+  host: articulate-ckunst-v2
+  memory: 1024M
+  instances: 1
+  path: target/articulate-0.0.1-SNAPSHOT.jar
